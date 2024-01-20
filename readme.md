@@ -1,0 +1,5 @@
+# About
+
+This repository is for coding tips and techniques. As the repository grows there will be branches so that the repository remain easy to maintain.
+
+[Article](https://dev.to/karenpayneoregon/gentle-introduction-to-generic-repository-pattern-with-c-1jn0)
