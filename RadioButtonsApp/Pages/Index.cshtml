@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+    legend {
+        border: solid 1px black;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        padding: 6px;
+    }
+
+    .ledgend-special {
+        width: 12em;
+    }
+
+    .ledgend-span {
+        padding-left: .5em;
+        padding-right: .5em;
+        font-size: 1.5em;
+    }
+</style>
+<div class="container mt-4">
+    <form method="post">
+        
+        <fieldset class="border border-black p-3 bg-light" style="width: 20em;">
+            <legend class="float-none w-auto fs-6">Did you try to retain the staff?</legend>
+            @{
+                @foreach (string choice in Model.Answers)
+                {
+                    <div class="form-check">
+
+                        <input type="radio"
+                               class="form-check-input"
+                               asp-for="UserResponse"
+                               value="@choice"
+                               id="Item@(choice)" />
+
+                        <label class="form-check-label" for="Item@(choice)">@choice</label>
+                    </div>
+                }
+            }
+        </fieldset>
+
+        <div>
+            <input type="submit" value="Submit" class="btn btn-primary mt-2"/>
+        </div>
+
+    </form>
+</div>
