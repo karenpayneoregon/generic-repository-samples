@@ -28,19 +28,26 @@
         <fieldset class="border border-black p-3 bg-light" style="width: 20em;">
             <legend class="float-none w-auto fs-6">Did you try to retain the staff?</legend>
             @{
-                @foreach (string choice in Model.Answers)
-                {
-                    <div class="form-check">
+                <div class="form-check">
 
-                        <input type="radio"
-                               class="form-check-input"
-                               asp-for="UserResponse"
-                               value="@choice"
-                               id="Item@(choice)" />
+                    <input type="radio"
+                           class="form-check-input"
+                           asp-for="UserResponse"
+                           value="Yes"
+                           id="Yes" />
 
-                        <label class="form-check-label" for="Item@(choice)">@choice</label>
-                    </div>
-                }
+                    <label class="form-check-label" for="Yes">Yes</label>
+                </div>
+                <div class="form-check">
+
+                    <input type="radio"
+                           class="form-check-input"
+                           asp-for="UserResponse"
+                           value="No"
+                           id="No" />
+
+                    <label class="form-check-label" for="No">No</label>
+                </div>
             }
         </fieldset>
 
