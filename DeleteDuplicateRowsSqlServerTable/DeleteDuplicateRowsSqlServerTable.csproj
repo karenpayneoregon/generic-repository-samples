@@ -13,11 +13,13 @@
 
 	<ItemGroup>
 		<None Remove="readme.md" />
+		<None Remove="Scripts\DuplicateRow.sql" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="assets\csharp.ico" />
 		<Content Include="readme.md" />
+		<Content Include="Scripts\DuplicateRow.sql" />
 	</ItemGroup>
 
 	<ItemGroup>
