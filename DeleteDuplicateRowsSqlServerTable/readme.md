@@ -11,5 +11,4 @@ Using the screenshot below, remove duplicate by FirstName and LastName, keep the
 
 
 
-
 ![Screen](assets/screen.png)
