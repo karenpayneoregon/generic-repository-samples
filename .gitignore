@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /ConsistencySampleLibrary/Repositories/ProductBaseRepository.cs
 /DeleteDuplicateRowsSqlServerTable/Scripts/stash.cs
 /NumberToDateInSqlServer/Scripts/stash.sql
+/DeleteDuplicateRowsSqlServerTable/Scripts/DuplicateRow.sql
