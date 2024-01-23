@@ -72,10 +72,9 @@ internal class Operations
     /// </summary>
     public void RemoveDuplicates()
     {
-        _cn.Execute(
-            """
-            TODO
-            """);
+        // Both perform the remove duplicates
+        //_cn.Execute(SqlStatements.Statement1);
+        //_cn.Execute(SqlStatements.Statement2);
     }
 
 }
