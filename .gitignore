@@ -365,3 +365,4 @@ FodyWeavers.xsd
 /DeleteDuplicateRowsSqlServerTable/Scripts/stash.cs
 /NumberToDateInSqlServer/Scripts/stash.sql
 /DeleteDuplicateRowsSqlServerTable/Scripts/DuplicateRow.sql
+/DeleteDuplicateRowsSqlServerTable/Scripts/GetMonthNameFromNumber.sql
