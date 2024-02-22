@@ -28,7 +28,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioButtonsApp", "RadioBut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberToDateInSqlServer", "NumberToDateInSqlServer\NumberToDateInSqlServer.csproj", "{C41E5D9F-F19E-4BF9-A5DE-00D152EA530B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteDuplicateRowsSqlServerTable", "DeleteDuplicateRowsSqlServerTable\DeleteDuplicateRowsSqlServerTable.csproj", "{FA7532BF-083B-4EB6-9E32-00F18CFD395A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteDuplicateRowsSqlServerTable", "DeleteDuplicateRowsSqlServerTable\DeleteDuplicateRowsSqlServerTable.csproj", "{FA7532BF-083B-4EB6-9E32-00F18CFD395A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCoreBulkInsertsApp", "EntityFrameworkCoreBulkInsertsApp\EntityFrameworkCoreBulkInsertsApp.csproj", "{1CDA2473-C983-4271-A07C-9843FA28D64A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{FA7532BF-083B-4EB6-9E32-00F18CFD395A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7532BF-083B-4EB6-9E32-00F18CFD395A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA7532BF-083B-4EB6-9E32-00F18CFD395A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDA2473-C983-4271-A07C-9843FA28D64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDA2473-C983-4271-A07C-9843FA28D64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDA2473-C983-4271-A07C-9843FA28D64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDA2473-C983-4271-A07C-9843FA28D64A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

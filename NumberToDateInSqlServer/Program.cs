@@ -52,9 +52,6 @@ internal class Operations
             FROM Examples.dbo.ChallengeTable;
             """;
 
-        return _cn.Query<ChallengeTable>(
-            """
-            Pick one of the statements above, both work
-            """).ToList();
+        return _cn.Query<ChallengeTable>(statement1).ToList();
     }
 }
