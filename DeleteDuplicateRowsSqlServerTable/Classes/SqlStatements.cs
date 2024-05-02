@@ -37,4 +37,23 @@ internal class SqlStatements
         WHERE dup_count > 1
               AND t.Id <> min_id;
         """;
+    
+    public static string CreatePopulateTableGetDuplicates =>
+        """
+        DECLARE @TempTable TABLE (id INT,name VARCHAR(10),email VARCHAR(50));
+        
+        INSERT @TempTable VALUES (1, 'John', 'John-email');
+        INSERT @TempTable VALUES (2, 'John', 'John-email');
+        INSERT @TempTable VALUES (3, 'Fred', 'John-email');
+        INSERT @TempTable VALUES (4, 'Fred', 'fred-email');
+        INSERT @TempTable VALUES (5, 'Sam', 'sam-email');
+        INSERT @TempTable VALUES (6, 'Sam', 'sam-email');    
+        
+        SELECT y.id, y.name, y.email FROM @TempTable y
+            INNER JOIN
+            (
+                SELECT name,email,COUNT(*) AS CountOf FROM @TempTable
+                GROUP BY name,email HAVING COUNT(*) > 1
+            ) dt ON y.name = dt.name AND y.email = dt.email;                   
+        """;
 }

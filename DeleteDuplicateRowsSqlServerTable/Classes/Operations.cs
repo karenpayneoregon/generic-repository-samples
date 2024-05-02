@@ -80,27 +80,9 @@ internal class Operations
 
     public void YourTableDuplicates()
     {
-        const string sql = 
-            """
-            DECLARE @YourTable TABLE (id INT,name VARCHAR(10),email VARCHAR(50));
-            
-            INSERT @YourTable VALUES (1, 'John', 'John-email');
-            INSERT @YourTable VALUES (2, 'John', 'John-email');
-            INSERT @YourTable VALUES (3, 'Fred', 'John-email');
-            INSERT @YourTable VALUES (4, 'Fred', 'fred-email');
-            INSERT @YourTable VALUES (5, 'Sam', 'sam-email');
-            INSERT @YourTable VALUES (6, 'Sam', 'sam-email');    
-            
-            SELECT y.id, y.name, y.email
-            FROM @YourTable y
-                INNER JOIN
-                (
-                    SELECT  name,email,COUNT(*) AS CountOf FROM @YourTable
-                    GROUP BY name,email HAVING COUNT(*) > 1
-                ) dt ON y.name = dt.name AND y.email = dt.email;                   
-            """;
 
-        var list = _cn.Query<Item>(sql).ToList();
+        List<ItemContainer> list = _cn.Query<ItemContainer>(
+            SqlStatements.CreatePopulateTableGetDuplicates).ToList();
         var result = list.GroupBy(x => 
             new { x.Name, x.Email }, (key, group) => new
         {
@@ -109,9 +91,10 @@ internal class Operations
             List = group.ToList()
         });
 
+        Console.WriteLine("Name     Email");
         foreach (var data in result)
         {
-            Console.WriteLine($"Name: {data.Name,-5} Email: {data.Email}");
+            Console.WriteLine($"{data.Name,-9}{data.Email}");
             foreach (var item in data.List)
             {
                 Console.WriteLine($"  {item.Id}");
@@ -119,14 +102,5 @@ internal class Operations
         }
 
     }
-
-}
-
-public class Item
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public override string ToString() => Name;
 
 }
