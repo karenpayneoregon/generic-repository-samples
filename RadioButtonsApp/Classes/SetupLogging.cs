@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using RadioButtonsApp.Models;
+using Serilog;
 using Serilog.Events;
 using SeriLogThemesLibrary;
 
@@ -21,3 +22,22 @@ public class SetupLogging
 }
 
 
+    public interface IDataService
+    {
+        string Get(string key, ApplicationOptions options);
+    }
+    public class EntityCore : IDataService
+    {
+        public string Get(string key, ApplicationOptions options)
+        {
+            return $"Key {key} EF Core";
+        }
+    }
+
+    public class Dapper : IDataService
+    {
+        public string Get(string key, ApplicationOptions options)
+        {
+            return $"Key {key} Dapper";
+        }
+    }

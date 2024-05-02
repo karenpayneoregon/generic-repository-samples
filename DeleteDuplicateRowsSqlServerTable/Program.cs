@@ -9,7 +9,9 @@ internal partial class Program
         var table = CreateTable();
 
         Operations operations = new();
-
+        
+        operations.YourTableDuplicates();
+        Console.ReadLine();
         // flush current data, repopulate with ten records
         operations.Populate();
         var data = operations.GetAll();

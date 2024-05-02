@@ -1,4 +1,5 @@
 using RadioButtonsApp.Classes;
+using RadioButtonsApp.Models;
 
 namespace RadioButtonsApp;
 public class Program
@@ -10,6 +11,17 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorPages();
         SetupLogging.Development();
+
+        builder.Services.Configure<ApplicationOptions>(
+            builder.Configuration.GetSection(ApplicationOptions.Settings));
+
+        builder.Services.AddKeyedSingleton<IDataService, 
+            EntityCore>("ef");
+
+        builder.Services.AddKeyedSingleton<IDataService, 
+            Dapper>("dapper");
+
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

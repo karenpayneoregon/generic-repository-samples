@@ -7,7 +7,7 @@ internal class EntityFrameworkOperations
 {
     public void Work(List<Customer> customers)
     {
-        using (TransactionScope scope = new TransactionScope())
+        using (TransactionScope scope = new())
         {
             Context context = null;
             try

@@ -1,11 +1,8 @@
-﻿
-
-
-using ConsistencySampleLibrary.Data;
-// ReSharper disable once CheckNamespace
+﻿using ConsistencySampleLibrary.Data;
 using System.Runtime.CompilerServices;
 using static WorkingWithInterfacesApp1.Classes.SpectreConsoleHelpers;
 
+// ReSharper disable once CheckNamespace
 namespace WorkingWithInterfacesApp1;
 internal partial class Program
 {
