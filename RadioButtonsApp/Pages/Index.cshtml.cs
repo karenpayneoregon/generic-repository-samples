@@ -39,10 +39,9 @@ public class IndexModel : PageModel
     [BindProperty]
     public string? UserResponse { get; set; }
 
-    public string[] Answers = { "Yes", "No"};
-    public async Task<IActionResult> OnPost()
+    public string[] Answers = ["Yes", "No"];
+    public IActionResult OnPost()
     {
-        await Task.Delay(0);
         var selection = UserResponse;
         if (string.IsNullOrEmpty(selection))
         {

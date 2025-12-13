@@ -23,7 +23,9 @@ internal partial class Program
     {
         await using Context context = new ();
         var productsRepository = new ProductsRepository(context);
+        
         var countryRepository = new CountryRepository(context);
+        await countryRepository.GetByIdAsync(1);
 
         var allProducts = productsRepository.GetAll().ToList();
 

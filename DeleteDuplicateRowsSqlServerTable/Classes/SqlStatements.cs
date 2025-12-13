@@ -1,7 +1,6 @@
 ﻿namespace DeleteDuplicateRowsSqlServerTable.Classes;
 internal class SqlStatements
 {
-    // Karen @KarenPayneMVP
     public static string Statement1 => 
         """
         DELETE FROM dbo.PersonWithDuplicates 
@@ -12,7 +11,6 @@ internal class SqlStatements
             );
         """;
 
-    // João Silva @kappyzor
     public static string Statement2 =>
         """
         DELETE t

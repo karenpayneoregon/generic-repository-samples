@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using ConsistencySampleLibrary.Models;
 using ConsistencySampleLibrary.Data;
 using Microsoft.EntityFrameworkCore;
+#pragma warning disable CS8603 // Possible null reference return.
 
 namespace ConsistencySampleLibrary.Repositories;
 
@@ -30,7 +31,7 @@ public class CountryRepository : IGenericRepository<Countries>
 
     public Countries GetById(int id)
     {
-        throw new NotImplementedException();
+        return _context.Countries.FirstOrDefault(c => c.Id == id);
     }
 
     public Countries GetByIdWithIncludes(int id)
@@ -40,7 +41,7 @@ public class CountryRepository : IGenericRepository<Countries>
 
     public Task<Countries> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return _context.Countries.FirstOrDefaultAsync(c => c.Id == id)!;
     }
 
     public Task<Countries> GetByIdWithIncludesAsync(int id)
@@ -55,12 +56,12 @@ public class CountryRepository : IGenericRepository<Countries>
 
     public void Add(in Countries sender)
     {
-        throw new NotImplementedException();
+        _context.Countries.Add(sender).State = EntityState.Added;
     }
 
     public void Update(in Countries sender)
     {
-        throw new NotImplementedException();
+        _context.Countries.Update(sender);
     }
 
     public int Save()
