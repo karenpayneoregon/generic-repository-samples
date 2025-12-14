@@ -1,7 +1,14 @@
 ﻿namespace DeleteDuplicateRowsSqlServerTable.Classes;
 internal class SqlStatements
 {
-    public static string Statement1 => 
+    /// <summary>
+    /// Gets the SQL statement used to delete duplicate rows from the <c>PersonWithDuplicates</c> table.
+    /// </summary>
+    /// <remarks>
+    /// This SQL statement removes duplicate rows while retaining the row with the minimum <c>Id</c>.
+    /// Duplicates are identified based on matching <c>FirstName</c>, <c>LastName</c>, and other relevant columns.
+    /// </remarks>
+    public static string DeleteStatement => 
         """
         DELETE FROM dbo.PersonWithDuplicates 
         WHERE Id IN (
@@ -11,31 +18,24 @@ internal class SqlStatements
             );
         """;
 
-    public static string Statement2 =>
-        """
-        DELETE t
-        FROM dbo.PersonWithDuplicates t
-            INNER JOIN
-            (
-                SELECT MIN(Id) min_id,
-                       FirstName,
-                       LastName,
-                       BirthDay,
-                       SUM(1) AS dup_count
-                FROM dbo.PersonWithDuplicates
-                GROUP BY FirstName,
-                         LastName,
-                         BirthDay
-            ) dups
-                ON (
-                       t.FirstName = dups.FirstName
-                       AND t.LastName = dups.LastName
-                       AND t.BirthDay = dups.BirthDay
-                   )
-        WHERE dup_count > 1
-              AND t.Id <> min_id;
-        """;
     
+    /// <summary>
+    /// Gets the SQL statement for creating and populating a table 
+    /// with duplicate records based on specific criteria.
+    /// </summary>
+    /// <remarks>
+    /// This property defines a SQL script that:
+    /// <list type="bullet">
+    /// <item>Creates a table named <c>@TempTable</c>.</item>
+    /// <item>Populates the table with sample data.</item>
+    /// <item>Identifies duplicate records based on the <c>name</c> and <c>email</c> columns.</item>
+    /// <item>Returns the duplicate records along with their IDs.</item>
+    /// </list>
+    /// The script is useful for testing and demonstrating duplicate detection logic.
+    /// </remarks>
+    /// <returns>
+    /// A SQL script as a <see cref="string"/> that can be executed to identify duplicates.
+    /// </returns>
     public static string CreatePopulateTableGetDuplicates =>
         """
         DECLARE @TempTable TABLE (id INT,name VARCHAR(10),email VARCHAR(50));

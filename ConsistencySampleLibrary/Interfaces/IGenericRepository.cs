@@ -2,6 +2,12 @@
 
 namespace ConsistencySampleLibrary.Interfaces;
 
+/// <summary>
+/// Represents a generic repository interface for managing entities of type <typeparamref name="T"/>.
+/// </summary>
+/// <typeparam name="T">
+/// The type of the entity that the repository will manage. Must be a reference type.
+/// </typeparam>
 public interface IGenericRepository<T> where T : class
 {
     IEnumerable<T> GetAll();

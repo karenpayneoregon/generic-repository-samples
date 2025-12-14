@@ -15,10 +15,9 @@ public static class EntityExtensions
             .UseSqlServer(connectionString)
             .EnableSensitiveDataLogging()
             .LogTo(new DbContextToFileLogger().Log,
-                new[]
-                {
+                [
                     DbLoggerCategory.Database.Command.Name
-                },
+                ],
                 LogLevel.Information);
     }
 
@@ -32,10 +31,9 @@ public static class EntityExtensions
         optionsBuilder
             .UseSqlServer(connectionString)
             .LogTo(new DbContextToFileLogger().Log,
-                new[]
-                {
+                [
                     DbLoggerCategory.Database.Command.Name
-                },
+                ],
                 LogLevel.Information);
     }
     /// <summary>
@@ -55,10 +53,9 @@ public static class EntityExtensions
             .UseSqlServer(connectionString, sqlServerOptionsBuilder => sqlServerOptionsBuilder.UseHierarchyId())
             .EnableSensitiveDataLogging()
             .LogTo(new DbContextToFileLogger().Log,
-                new[]
-                {
+                [
                     DbLoggerCategory.Database.Command.Name
-                },
+                ],
                 LogLevel.Information);
     }
 }

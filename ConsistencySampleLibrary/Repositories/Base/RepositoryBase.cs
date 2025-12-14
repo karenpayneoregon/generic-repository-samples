@@ -6,9 +6,12 @@ using ConsistencySampleLibrary.Data;
 namespace ConsistencySampleLibrary.Repositories.Base;
 
 /// <summary>
-/// Part of a solution on Stackoverflow for web
-/// https://stackoverflow.com/a/55664975/5509738
+/// Provides a base implementation for a generic repository pattern, enabling CRUD operations
+/// and querying for entities of type <typeparamref name="TEntity"/>.
 /// </summary>
+/// <typeparam name="TEntity">
+/// The type of the entity for which this repository is responsible. Must be a reference type.
+/// </typeparam>
 public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
 {
 

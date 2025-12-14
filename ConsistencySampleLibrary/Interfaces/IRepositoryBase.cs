@@ -2,9 +2,11 @@
 
 namespace ConsistencySampleLibrary.Interfaces;
 /// <summary>
-/// Part of a solution on Stackoverflow for web
-/// https://stackoverflow.com/a/55664975/5509738
+/// Defines a generic repository interface for performing CRUD operations and querying entities of type <typeparamref name="T"/>.
 /// </summary>
+/// <typeparam name="T">
+/// The type of the entity for which this repository is responsible. Must be a reference type.
+/// </typeparam>
 public interface IRepositoryBase<T> where T : class
 {
     void Add(T objModel);

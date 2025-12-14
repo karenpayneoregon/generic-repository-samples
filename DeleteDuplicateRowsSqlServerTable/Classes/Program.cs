@@ -13,7 +13,9 @@ internal partial class Program
     }
 
     public static Table CreateTable()
-        => new Table().RoundedBorder().LeftAligned()
+        => new Table()
+            .RoundedBorder()
+            .Centered()
             .AddColumn("[cyan]Id[/]")
             .AddColumn("[cyan]First[/]")
             .AddColumn("[cyan]Last[/]")

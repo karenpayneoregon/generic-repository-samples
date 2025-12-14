@@ -6,11 +6,19 @@ using Microsoft.Data.SqlClient;
 
 namespace DeleteDuplicateRowsSqlServerTable.Classes;
 
+
 /// <summary>
-/// Belongs in its own file but for this it is easier to work with.
+/// Provides operations for managing and manipulating data in the 
+/// <c>PersonWithDuplicates</c> table within the SQL Server database.
 /// </summary>
+/// <remarks>
+/// This class includes methods for populating the table with predefined data, 
+/// removing duplicate rows, resetting the table to its initial state, 
+/// and retrieving data. It leverages Dapper for database interactions.
+/// </remarks>
 internal class Operations
 {
+    // Usually in appsettings.json
     private IDbConnection _cn = new SqlConnection(
         "Data Source=.\\SQLEXPRESS;Initial Catalog=Examples;Integrated Security=True;Encrypt=False");
 
@@ -18,9 +26,6 @@ internal class Operations
     /// Setup for Dapper to work with DateOnly
     /// Create a connection to the database
     /// </summary>
-    /// <remarks>
-    /// If not using SQLEXPRESS change it here to your server
-    /// </remarks>
     public Operations()
     {
         SqlMapper.AddTypeHandler(new SqlDateOnlyTypeHandler());
@@ -37,11 +42,21 @@ internal class Operations
             """).ToList();
 
     /// <summary>
-    /// Flush current rows, reset identity, repopulate data
+    /// Removes all existing rows from the <c>PersonWithDuplicates</c> table, resets the identity seed, 
+    /// and inserts a predefined set of rows with potential duplicates.
     /// </summary>
+    /// <remarks>
+    /// This method is useful for resetting the table to a known state with predefined data, 
+    /// including duplicate rows for testing or demonstration purposes.
+    /// </remarks>
+    /// <exception cref="SqlException">
+    /// Thrown if there is an issue executing the SQL commands.
+    /// </exception>
     public void Populate()
     {
-        Reset();
+        
+        ResetTable();
+        
         _cn.Execute(
             """
             INSERT INTO PersonWithDuplicates ([FirstName], [LastName], [BirthDay])
@@ -60,22 +75,40 @@ internal class Operations
     }
 
     /// <summary>
-    /// Reset table
+    /// Deletes all rows from the <c>PersonWithDuplicates</c> table and resets the identity seed to zero.
     /// </summary>
-    public void Reset()
+    /// <remarks>
+    /// This method ensures that the table is emptied and its identity column is reset, 
+    /// allowing new rows to start with an identity value of 1.
+    /// </remarks>
+    /// <exception cref="SqlException">
+    /// Thrown if there is an issue executing the SQL commands.
+    /// </exception>
+    public void ResetTable()
     {
         _cn.Execute($"DELETE FROM dbo.{nameof(PersonWithDuplicates)}");
         _cn.Execute($"DBCC CHECKIDENT ({nameof(PersonWithDuplicates)}, RESEED, 0)");
     }
 
     /// <summary>
-    /// Remove duplicates
+    /// Removes duplicate rows from the <c>PersonWithDuplicates</c> table in the database.
     /// </summary>
+    /// <remarks>
+    /// This method executes a SQL statement to delete duplicate rows while retaining the row with the minimum <c>Id</c>.
+    /// Duplicates are determined based on matching <c>FirstName</c>, <c>LastName</c>, and other relevant columns.
+    /// </remarks>
+    /// <exception cref="SqlException">
+    /// Thrown if there is an issue executing the SQL statement on the database.
+    /// </exception>
+    /// <example>
+    /// <code>
+    /// Operations operations = new();
+    /// operations.RemoveDuplicates();
+    /// </code>
+    /// </example>
     public void RemoveDuplicates()
     {
-        // Both perform the remove duplicates
-        _cn.Execute(SqlStatements.Statement1);
-        //_cn.Execute(SqlStatements.Statement2);
+        _cn.Execute(SqlStatements.DeleteStatement);
     }
 
     public void YourTableDuplicates()

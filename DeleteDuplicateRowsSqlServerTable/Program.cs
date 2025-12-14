@@ -17,7 +17,7 @@ internal partial class Program
         table.AddRow("[red]With duplications[/]");
         foreach (var person in data)
         {
-            table.AddRow(person.Id.ToString(), person.FirstName, person.LastName, person.BirthDay.ToString());
+            table.AddRow(person.Id.ToString(), person.FirstName, person.LastName, $"{person.BirthDay:MM/dd/yyyy}");
         }
 
         // Remove duplicates
@@ -28,7 +28,7 @@ internal partial class Program
         table.AddRow("[yellow]Without duplications[/]");
         foreach (var person in data)
         {
-            table.AddRow(person.Id.ToString(), person.FirstName, person.LastName, person.BirthDay.ToString());
+            table.AddRow(person.Id.ToString(), person.FirstName, person.LastName, $"{person.BirthDay:MM/dd/yyyy}");
         }
 
         AnsiConsole.Write(table);

@@ -2,6 +2,14 @@
 
 namespace ConsistencySampleLibrary.Models;
 
+/// <summary>
+/// Represents a product entity with properties for identification, name, and category.
+/// </summary>
+/// <remarks>
+/// This class implements the <see cref="Interfaces.IBase"/> interface 
+/// and provides additional properties specific to products, such as <c>ProductId</c>, <c>Name</c>, 
+/// and <c>Category</c>.
+/// </remarks>
 public class Product : IBase
 {
     public int Id => ProductId;
